@@ -244,7 +244,7 @@ def message_handler(data,phone_id):
         
 @app.route("/", methods=["GET", "POST"])
 def index():
-    return templates("connected.html")
+     return render_template("connected.html")
 
 @app.route("/webhook", methods=["GET", "POST"])
 def webhook():
