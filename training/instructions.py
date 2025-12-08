@@ -1,10 +1,10 @@
 from training import products
 
-company_name="Falcora Store"
-company_address="1234 Innovation Drive, Suite 100, Tech City, CA 90001"
-company_email="falcoraltd@gmail.com"
-company_website="www.falcora.com"
-company_phone="+918848278440"
+company_name="Umbrella Labs"
+company_address="Level 4/80 Ann St, Brisbane City QLD"
+company_email="sales@umbrellanet.com.au"
+company_website="www.umbrellanet.com.au"
+company_phone="1300702720"
 
 instructions = (
     f"Your new identity is {company_name}'s Online Assistance.\n"
