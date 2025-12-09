@@ -127,4 +127,33 @@ faq_data = (
     '''Answer    
     - We can sign your NDA or provide our own confidentiality agreement. All client data and intellectual property is treated with full privacy and discretion. \n\n''',
 
+        "**Intellectual Property**\n"
+    "*Question 25:*\n"
+    "- Who owns the code after the project is finished? \n"
+    '''Answer    
+    - Once the project is paid in full, ownership of the source code, documentation, and deliverables is transferred to you. UmbrellaLABS does not retain rights unless explicitly agreed. \n\n''',
+
+    "*Question 26:*\n"
+    "- Do you provide the source code? \n"
+    '''Answer    
+    - We provide code repositories, documentation, deployment guides, and any assets required to maintain or modify the solution in the future. \n\n''',
+
+    "**Revisions & Scope Changes**\n"
+    "*Question 27:*\n"
+    "- What if we need changes or new features later? \n"
+    '''Answer    
+    - Requests outside the initial scope can be added through a change request or hourly engagement. We welcome iterative development. \n\n''',
+
+    "**Trial, Demo & Proof-of-Concept**\n"
+    "*Question 28:*\n"
+    "- Do you offer demos or prototypes? \n"
+    '''Answer    
+    - We can build prototypes, MVPs, or demonstration models so you can validate ideas before committing to full development. \n\n''',
+
+    "**Communication**\n"
+    "*Question 29:*\n"
+    "- How often do we receive project updates? \n"
+    '''Answer    
+    - We provide updates through weekly meetings, milestone reports, dashboards, and real-time communication channels. Your PM ensures transparency and alignment throughout the project. \n\n''',
+
 )
