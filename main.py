@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.INFO)
 #But you need to set up vercel postgres database and set the 'DB_URL' environment variable with the database url.
 #Otherwise the bot will crash.
 #If you need help setting up vercel postgres database, contact me on LinkedIn (link in profile).
-db=False
+db=False 
 wa_token=os.environ.get("WA_TOKEN") # Whatsapp API Key
 gen_api=os.environ.get("GEN_API") # Gemini API Key
 owner_phone=os.environ.get("OWNER_PHONE") # Owner's phone number with countrycode
