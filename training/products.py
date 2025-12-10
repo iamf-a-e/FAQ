@@ -28,15 +28,10 @@ products=(
    
     
     "*Product 4:*\n"
-    "- Name: IQOO Neo 9 Pro 5G\n"
+    "- Name: Workflow Automation\n"
     '''About this item
-    Flagship Level Performance - Snapdragon 8gen2 Mobile platform based on TSMC 4nm process with tri cluster architecture of 1+4+3 which is clocked at 3.2GHz.
-    Dual chip power - Dedicated flagship supercomputing chip Q1 with 900P Level of game super resolution and 144fps Game frame interpolation for lag free gaming experience along with MEMC & super resolution in Videos.
-    Flagship level camera - Primary 50MP Sony IMX920 Night vision camera with OIS, 4K video recording at Night and upto 8K video recording during day time, 2x Portrait, Live photo and Supermoon modes. 8MP Ultra-wide angle camera with 116 degree field angle.
-    6.78″ 144 Hz LTPO AMOLED Display - 1.54mm ultra narrow side bezels and 3000nits local peak brightness, 2160Hz PWM dimming, SGS eye care display.
-    Fast and long lasting battery - 5160mAh high performance battery, 50% charge in 11min\n'''
-    "Price: $467.68\n"
-    "-Availability: Out of Stock\n\n"
+    \n\n'''
+   
   
    "*Product 5:*\n"
     "- Name: Realme Narzo 70 Pro 5G\n"
