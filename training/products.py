@@ -1,6 +1,6 @@
 
 
- and reporting systems
+ and 
 Mobile or web applications
 System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
@@ -41,17 +41,10 @@ products=(
     
 
     "*Product 2:*\n"
-    "- Name: Lenovo LOQ 2024\n"
+    "- Name: Reporting Systems\n"
     '''About this item
-    Processor: Intel Core i5-12450HX | Speed: 2.4GHz (Base) - 4.4GHz (Max) | 8 Cores | 12 Threads | 12MB Cache
-    Display: 15.6" FHD (1920x1080) IPS Technology | 144 Hz Refresh Rate | 100pct. sRGB |Brightness: 300Nits Anti-glare || Connectivity : Wifi 6E 11ax (2x2) | Bluetooth 5.2
-    Memory: 16GB RAM DDR5-4800 | Storage: 512GB SSD (Expandable upto 1TB)
-    Graphics: NVIDIA GeForce RTX 3050 6GB GDDR6, Boost Clock 1732MHz, TGP 95W | G-Sync || Cooling: Hyperchamber thermal design is a game-changer. Dual fans spin outward, expelling heat eciently from the rear end, and the sealed chamber grants an extra 10W of power in Extreme Mode, reduces skin temperature, and minimizes noise
-    AI Engine + : The Lenovo AI Engine+ and Lenovo LA1 AI Chip work together with the MUX Switch with NVIDIA Advanced Optimus for a truly epic boost in performance, at levels you've never seen before.
-    OS and Pre-Installed Softare: Pre-Loaded Windows 11 Home with Lifetime Validity || Battery Life: 60Wh (upto 6Hrs) | Rapid Charge Pro (100pct. Battery Life in 80min)
-    Audio: 2x 2W HD Stereo Speakers | Nahimic Audio with Surround Sound, Sound Tracker, Night Mode, Sound Sharing & Content Profiles || Camera: HD 720p | E-cam Shutter | Integrated Dual Array Microphone\n'''
-    "Price: $791.59\n"
-    "-Availability: In Stock\n\n"
+    \n\n'''
+  
 
     "*Product 3:*\n"
     "- Name: Asus Tuff F15\n"
