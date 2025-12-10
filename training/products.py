@@ -46,17 +46,12 @@ products=(
     \n\n'''
   
 
-    "**Category-Earbuds**\n"
+    "**Category-Applications**\n"
     "*Product 1:*\n"
-    "- Name: One Plus Nord Buds 2r\n"
+    "- Name: Mobile Applications\n"
     '''About this item
-    [Enhanced Sound Experience]: The buds comes with 12.4mm driver unit, which delivers crisp clear and enhanced bass quality sound experience
-    [Sound Master Equalizers]: For the OnePlus Nord Buds 2r, you get to choose how heavy or light you want your sound with the help of sound master equalizer s 3 unique audio profiles -Bold, Bass & Balanced
-    [Battery Life]:The flagship-level battery life for the all-new OnePlus Nord Buds 2r delivers up to 38 hrs of non-stop music on a single charge.; [IP55 rating]: IP55 Water & Sweat Resistance
-    [Gaming Mode]: It allows users to access a plethora of features while playing supported games on a OnePlus handset. They can be accessed at any time while playing games and give players the option to toggle different features and settings
-    Battery Average Life: 38.0 Hours; Model: E510a\n'''
-    "Price: $22.78\n"
-    "-Availability: In Stock\n\n"
+    \n\n'''
+    
 
     "*Product 2:*\n"
     "- Name: Realme Buds T110\n"
