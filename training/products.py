@@ -3,7 +3,7 @@
 
  
 
-, backend systems, and enterprise software
+, , and enterprise software
 
 products=(
     "**Category-AI and Automation**\n"
@@ -98,7 +98,7 @@ products=(
 
 
      "*Product 2:*\n"
-     "- Name: \n"
+     "- Name: Backend Systems\n"
      '''About this item
      \n\n'''
 
