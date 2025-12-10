@@ -1,6 +1,6 @@
 
 
-Custom dashboards and reporting systems
+ and reporting systems
 Mobile or web applications
 System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
@@ -35,17 +35,10 @@ products=(
       
   "**Category-Custom**\n"
     "*Product 1:*\n"
-    "- Name: HP Victus Gaming Laptop\n"
+    "- Name: Custom dashboards\n"
     '''About this item
-    6-core AMD Ryzen 5 5600H, Experience the power of 12 threads and a 16MB L3 cache, designed for serious gaming and multitasking. Stay cool under pressure with the updated thermals
-    4 GB NVIDIA GeForce RTX 3050 Laptop GPU, Unlock an immersive gaming experience with graphics that deliver enhanced 3D rendering and hyper-efficient data processing
-    Popular games, Play all your favorite games like Grand Theft Auto V, Cyberpunk 2077, World of Warcraft, Minecraft, The Witcher 3, God of War 4, FIFA 23, Warhammer 40,000, and Gotham Knights
-    Upgraded memory and storage, Upgrade your system with 512GB PCIe Gen4 NVMe TLC M.2 SSD and 16GB DDR4 RAM. Conquer opponents with improved responsiveness and ample storage for all your gaming needs.
-    Micro-edge display, Enjoy the immersive 15.6” FHD display with a micro-edge bezel and anti-glare screen delivering high-quality visuals with a rapid 144Hz refresh rate and 9ms response time
-    Long battery life, Game without interruptions with a 3-cell, 52.5Wh battery that lasts longer than toughest of enemies in game. Fast charge up to 50% in just 30 minutes for extended marathons
-    Effortless connectivity for gaming sessions, Wi-Fi 6 and Bluetooth 5.3 wireless card, 1 x USB Type-C, 2 x USB Type-A, 1 x RJ-45, and 1 x HDMI 2.1 ports provide seamless, swift connections\n'''
-    "Price: $719.61\n"
-    "-Availability: In Stock\n\n"
+    \n\n'''
+    
 
     "*Product 2:*\n"
     "- Name: Lenovo LOQ 2024\n"
