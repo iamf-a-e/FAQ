@@ -2,7 +2,7 @@
 
 
  
-System integrations (, , , PSA, VoIP, etc.)
+System integrations (, , , , VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
 
 products=(
@@ -79,7 +79,7 @@ products=(
 
 
     "*Product 4:*\n"
-    "- Name: \n"
+    "- Name: PSA\n"
     '''About this item
     \n\n'''
 
