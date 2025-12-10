@@ -49,9 +49,9 @@ products=(
     
 
     "*Product 2:*\n"
-    "- Name:Web Applications\n"
-    We offer custom web applications tailored to your taste
+    "- Name:Web Applications\n"    
     '''About this item
+    We offer custom web applications tailored to your taste
     \n\n'''
     
 
