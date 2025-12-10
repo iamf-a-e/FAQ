@@ -3,7 +3,7 @@
 
  
 
-, , and 
+
 
 products=(
     "**Category-AI and Automation**\n"
