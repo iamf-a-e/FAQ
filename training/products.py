@@ -2,7 +2,7 @@
 
 
  
-System integrations (, , , , , etc.)
+
 Cloud tools, backend systems, and enterprise software
 
 products=(
