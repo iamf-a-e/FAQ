@@ -34,7 +34,7 @@ products=(
    
   
     
-  "**Category-Laptops**\n"
+  "**Category-Custom**\n"
     "*Product 1:*\n"
     "- Name: HP Victus Gaming Laptop\n"
     '''About this item
