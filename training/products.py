@@ -33,17 +33,7 @@ products=(
     \n\n'''
    
   
-   "*Product 5:*\n"
-    "- Name: Realme Narzo 70 Pro 5G\n"
-    '''About this item
-    50MP Flagship Sony IMX890 Night vision camera with OIS, the largest sensor in the segment, 56% more light intake, 8MP Camera and 2MP lens, 16MP Front (Selfie) Camera
-    Horizon Glass Design : The 1st Glass Design in the segment with the better handling
-    Display : 6.67 Inches; 120 Hz AMOLED FHD+, Resolution: 2412 x 1080 pixels
-    Fast and long lasting battery - 5000mAh high performance battery and 67W Flashchage, 50% charge in 11 min
-    Air Gesture：one more way to interact, navigate through certain features of the smartphone without involving any physical contact\n'''
-    "Price: $239.90\n"
-    "-Availability: In Stock\n\n"
-  
+    
   "**Category-Laptops**\n"
     "*Product 1:*\n"
     "- Name: HP Victus Gaming Laptop\n"
