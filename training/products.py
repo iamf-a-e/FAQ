@@ -44,6 +44,7 @@ products=(
     "*Product 1:*\n"
     "- Name: Mobile Applications\n"
     '''About this item
+    We offer custom mobile applications tailored to your taste
     \n\n'''
     
 
