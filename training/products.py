@@ -46,19 +46,7 @@ products=(
     \n\n'''
   
 
-    "*Product 3:*\n"
-    "- Name: Asus Tuff F15\n"
-    '''About this item
-    Processor: Intel Core i5-11400H Processor 2.7 GHz (12M Cache, up to 4.5 GHz, 6 Cores) efficient multitasking, Improved multimedia tasks etc.
-    Storage: 512GB PCIe 3.0 NVMe M.2 SSD with additional 1x M.2 Slot for SSD Storage expansion |Memory: 16GB SO-DIMM DDR4 3200MHz Support Up to 32GB 2x SO-DIMM slots
-    Display: 144Hz Refresh Rate, 15.6 inch (39.62 cms) FHD (1920 x 1080) 16:9 250nits,vIPS-level Anti-glare display, Contrast Ratio: 1000:1 with Adaptive-Sync;
-    Operating System: Windows 11 Homewith Lifetime Validity
-    48WHrs, 4S1P, 4-cell Li-ion | Up to 6 hours battery life; Battery Average Life: 6.0 Hours. Note: Battery life depends on conditions of usage;
-    Keyboard: Backlit Chiclet Keyboard 1-Zone RGB;Design: 2.28 ~ 2.45 cm Thin; I/O Port: 1x RJ45 LAN port, 1x Thunderbolt 4 support, DisplayPort, 3x USB 3.2 Gen 1 Type-A
-    Enjoy over 100 high-quality PC games and one month of Game Pass-including EA Play, plus new and upcoming blockbusters on day one like Halo Infinite, Forza Horizon 5, and Age of Empires IV,
-    With new games added. Age of Empires IV, Back 4 Blood, Battlefield V, Forza Horizon 5, Halo Infinite*, Knockout City, Microsoft Flight Simulator, Minecraft PC Bundle, Need for Speed Heat, Psychonauts2, The Sims 4, Titanfall 2, 12 Minutes\n'''
-    "Price: $659.63\n"
-    "-Availability: In Stock\n\n"
+   
 
   "**Category-Earbuds**\n"
     "*Product 1:*\n"
