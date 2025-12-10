@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h2 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* AI Agent Floating Button */
+        .ai-agent-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .ai-agent-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.7);
+        }
+
+        .ai-agent-button i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .ai-agent-button .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 22px;
+            height: 22px;
+            background: #ef4444;
+            border-radius: 50%;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5); }
+            50% { box-shadow: 0 8px 30px rgba(56, 189, 248, 0.8); }
+            100% { box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+
+        /* Chat Modal - Fixed Height */
+        .chat-modal {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 380px;
+            height: 480px; /* Fixed height */
+            background: rgba(15, 23, 42, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-modal.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            padding: 20px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0; /* Prevent header from shrinking */
+            height: 80px; /* Fixed header height */
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .agent-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: white;
+        }
+
+        .agent-name h3 {
+            color: #f8fafc;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #10b981;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 22px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #38bdf8;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 0; /* Important for flex child scrolling */
+            height: calc(600px - 160px); /* Calculate based on fixed heights: 600px total - 80px header - 80px footer */
+        }
+
+        /* Custom scrollbar for chat body */
+        .chat-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-body::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.5);
+            border-radius: 10px;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(56, 189, 248, 0.7);
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+            font-size: 15px;
+            position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .agent-message {
+            align-self: flex-start;
+            background: rgba(56, 189, 248, 0.15);
+            border-bottom-left-radius: 5px;
+            color: #e2e8f0;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: rgba(129, 140, 248, 0.2);
+            border-bottom-right-radius: 5px;
+            color: #e2e8f0;
+        }
+
+        .timestamp {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .chat-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(56, 189, 248, 0.2);
+            flex-shrink: 0; /* Prevent footer from shrinking */
+            height: 80px; /* Fixed footer height */
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+            height: 40px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #f1f5f9;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.3s;
+            height: 100%;
+        }
+
+        .chat-input:focus {
+            border-color: #38bdf8;
+        }
+
+        .send-btn {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            border: none;
+            border-radius: 12px;
+            width: 50px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            height: 100%;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px;
+            background: rgba(56, 189, 248, 0.15);
+            border-radius: 18px;
+            align-self: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #38bdf8;
+            opacity: 0.4;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-modal {
+                width: calc(100% - 40px);
+                height: 500px; /* Slightly smaller fixed height on mobile */
+                right: 20px;
+                bottom: 100px;
+                left: 20px;
+            }
+            
+            .chat-body {
+                height: calc(500px - 160px); /* Adjust for mobile height */
+            }
+            
+            .ai-agent-button {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-modal {
+                height: 450px; /* Even smaller for very small screens */
+            }
+            
+            .chat-body {
+                height: calc(450px - 160px);
+                padding: 15px;
+            }
+            
+            .chat-header, .chat-footer {
+                padding: 15px;
+                height: 70px;
+            }
+            
+            .agent-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .agent-name h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> AI Agent Interface</h1>
+            <p class="subtitle">Experience next-generation AI interaction with our intelligent assistant. Click the AI agent in the bottom-right corner to start a conversation.</p>
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <h2><i class="fas fa-brain"></i> Intelligent Assistance</h2>
+                <p>Our AI agent uses advanced machine learning algorithms to understand your questions and provide accurate, helpful responses in real-time.</p>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-bolt"></i> Real-time Responses</h2>
+                <p>Get instant answers to your queries with our low-latency processing system. The AI agent can handle multiple topics simultaneously.</p>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-shield-alt"></i> Secure & Private</h2>
+                <p>All conversations are encrypted and processed with strict privacy protocols. Your data is never stored or shared with third parties.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Agent Floating Button -->
+    <div class="ai-agent-button" id="aiAgentButton">
+        <i class="fas fa-robot"></i>
+        <div class="notification">1</div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <div class="agent-info">
+                <div class="agent-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="agent-name">
+                    <h3>AI Assistant</h3>
+                    <div class="agent-status">
+                        <div class="status-dot"></div>
+                        <span>Online</span>
+                    </div>
+                </div>
+            </div>
+            <button class="close-btn" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="message agent-message">
+                Hello! I'm your AI assistant. I'm here to help you with any questions you might have. How can I assist you today?
+                <div class="timestamp">Just now</div>
+            </div>
+            
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message here..." autocomplete="off">
+                <button class="send-btn" id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const aiAgentButton = document.getElementById('aiAgentButton');
+        const chatModal = document.getElementById('chatModal');
+        const closeChat = document.getElementById('closeChat');
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const notification = document.querySelector('.notification');
+
+        // Open chat modal when AI agent is clicked
+        aiAgentButton.addEventListener('click', () => {
+            chatModal.classList.add('active');
+            notification.style.display = 'none';
+            
+            // Focus on input
+            setTimeout(() => {
+                chatInput.focus();
+            }, 300);
+        });
+
+        // Close chat modal when close button is clicked
+        closeChat.addEventListener('click', () => {
+            chatModal.classList.remove('active');
+        });
+
+        // Close chat modal when clicking outside of it
+        document.addEventListener('click', (event) => {
+            if (!chatModal.contains(event.target) && !aiAgentButton.contains(event.target)) {
+                chatModal.classList.remove('active');
+            }
+        });
+
+        // Send message when send button is clicked
+        sendMessage.addEventListener('click', sendUserMessage);
+
+        // Send message when Enter key is pressed
+        chatInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+
+        // Predefined AI responses
+        const aiResponses = [
+            "I understand your question. Based on my analysis, I'd recommend exploring the documentation for more specific details.",
+            "That's an interesting point. AI technology has evolved significantly in recent years, allowing for more natural interactions like this one.",
+            "I can help you with that. Could you provide a bit more context so I can give you the most accurate information?",
+            "I'm designed to assist with a wide range of topics including technology, science, general knowledge, and problem-solving.",
+            "Thanks for your question. Let me check my knowledge base to provide you with the most up-to-date information.",
+            "I'm constantly learning from interactions like these. Each conversation helps improve my responses and capabilities.",
+            "Security and privacy are important considerations in AI systems. Our conversation is encrypted and not stored permanently.",
+            "That's a common question. Many users are curious about how AI assistants work behind the scenes."
+        ];
+
+        // Function to send user message
+        function sendUserMessage() {
+            const messageText = chatInput.value.trim();
+            
+            if (messageText === '') return;
+            
+            // Add user message to chat
+            addMessageToChat(messageText, 'user');
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Show typing indicator
+            typingIndicator.classList.add('active');
+            
+            // Scroll to bottom
+            chatBody.scrollTop = chatBody.scrollHeight;
+            
+            // Simulate AI thinking, then respond
+            setTimeout(() => {
+                typingIndicator.classList.remove('active');
+                
+                // Get random AI response
+                const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                addMessageToChat(randomResponse, 'agent');
+            }, 1500 + Math.random() * 1000);
+        }
+
+        // Function to add message to chat
+        function addMessageToChat(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'agent-message');
+            
+            const time = new Date();
+            const timeString = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            messageDiv.innerHTML = `
+                ${text}
+                <div class="timestamp">${timeString}</div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            
+            // Scroll to bottom of chat
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Initialize with a welcome message after a short delay
+        setTimeout(() => {
+            if (!chatModal.classList.contains('active')) {
+                notification.style.display = 'flex';
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
