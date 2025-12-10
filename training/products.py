@@ -2,7 +2,7 @@
 
 
  
-System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
+System integrations (, CRM, ERP, PSA, VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
 
 products=(
@@ -59,9 +59,21 @@ products=(
     \n\n'''
     
 
-      "**Category-System Integrations**\n"
+    "**Category-System Integrations**\n"
     "*Product 1:*\n"
-    "- Name: Boat Airdopes 141\n"
+    "- Name: API-to-API\n"
+    '''About this item
+    \n\n'''
+ 
+
+    "*Product 2:*\n"
+    "- Name: API-to-API\n"
+    '''About this item
+    \n\n'''
+
+
+    "*Product 3:*\n"
+    "- Name: API-to-API\n"
     '''About this item
     \n\n'''
    
