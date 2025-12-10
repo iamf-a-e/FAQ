@@ -1,7 +1,7 @@
 
 
 
-Mobile or web applications
+ web applications
 System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
 
