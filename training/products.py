@@ -101,6 +101,12 @@ products=(
      "- Name: \n"
      '''About this item
      \n\n'''
+
+
+     "*Product 3:*\n"
+     "- Name: \n"
+     '''About this item
+     \n\n'''
    
 
     
