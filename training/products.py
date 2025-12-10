@@ -3,7 +3,7 @@
 
  
 
-Cloud tools, backend systems, and enterprise software
+, backend systems, and enterprise software
 
 products=(
     "**Category-AI and Automation**\n"
@@ -92,7 +92,7 @@ products=(
 
     "**Category-Others**\n"
     "*Product 1:*\n"
-    "- Name: \n"
+    "- Name: Cloud Tools\n"
     '''About this item
     \n\n'''
 
