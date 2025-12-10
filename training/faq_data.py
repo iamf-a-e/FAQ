@@ -11,7 +11,7 @@ faq_data = (
     - UmbrellaLABS focuses on software development, AI automation, and digital product creation. UmbrellaNET is our managed IT and cybersecurity division, handling infrastructure, support, and cloud services. UmbrellaTALENT provides global recruitment solutions. Together, these divisions allow us to support clients across technology, workforce, and innovation needs. \n\n''',
 
     "*Question 3:*\n"
-    "- What industries do you specialise in? \n"
+    "- What industries do you specialise in? \n" 
     '''Answer    
     - UmbrellaLABS is industry-agnostic. Our team has delivered solutions in IT, telecommunications, healthcare, financial services, e-commerce, government, education, logistics, and AI-driven environments. Because our solutions are custom-built, they can be adapted to any sector. \n\n''',
 
