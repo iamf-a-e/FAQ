@@ -28,7 +28,7 @@ owner_phone=os.environ.get("OWNER_PHONE") # Owner's phone number with countrycod
 model_name="gemini-2.0-flash"
 genai.configure(api_key=gen_api)
 name = "Fae"
-bot_name = "May"
+bot_name = "May" 
 
 app = Flask(__name__)
 genai.configure(api_key=gen_api)
