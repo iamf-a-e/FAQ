@@ -1,7 +1,7 @@
 
 
 
- web applications
+ 
 System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
 Cloud tools, backend systems, and enterprise software
 
@@ -54,15 +54,10 @@ products=(
     
 
     "*Product 2:*\n"
-    "- Name: Realme Buds T110\n"
+    "- Name:Web Applications\n"
     '''About this item
-    10mm Dynamic Bass Drivers
-    Fast Charge(10 mins Charge for 120 Mins Playback)
-    IPX 5 Water Resistant
-    88 Low Latency
-    Support Bluetooth 5.4\n'''
-    "Price: $17.98\n"
-    "-Availability: In Stock\n\n"
+    \n\n'''
+    
 
       "**Category-Laptops**\n"
     "*Product 3:*\n"
