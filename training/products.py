@@ -1,5 +1,5 @@
 
-Internal business tools and workflow automation
+ and workflow automation
 Custom dashboards and reporting systems
 Mobile or web applications
 System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
@@ -10,29 +10,22 @@ products=(
     "*Product 1:*\n"
     "- Name: AI Chatbots\n"
     '''About this item
-   We offer AI powered chatbots\n\n
+    We offer AI powered chatbots\n\n
     '''
   
     "*Product 2:*\n"
     "- Name: Automation Systems\n"
     '''About this item
-   \n\n
+    \n\n
     '''
     
     
     "*Product 3:*\n"
-    "- Name: One Plus Nord 3 5G\n"
+    "- Name: Internal Business Tools\n"
     '''About this item
-    Camera: 50MP Main Camera with Sony IMX890 (OIS supported), 8MP Ultrawide Camera with Sony IMX355 (FOV: 112 degree) and 2MP Macro lens f/2.4 and a FOV 89°; 16MP Front (Selfie) Camera with EIS supported
-    Camera Features: Photo, Video, Night, Portrait, PANO, TIME-LAPSE, and Dual-view video
-    Display: 6.74 Inches; 120 Hz AMOLED FHD+ Display with Corning Gorilla Glass Victus; Resolution: 2772 X 1240 pixels; HDR 10+, sRGB, 10-bit Color Depth, PWM + DC dimming
-    Operating System: OxygenOS based on Android 13.1
-    Processor: MediaTek Dimensity 9000 Chipset (Based 4nm Architecture)
-    Storage: 8 GB + 128 GB | 16 GB + 256 GB; LPDDR5X RAM, UFS 3.1
-    Battery & Charging: 5000 mAh with 80W SUPERVOOC Fast-charging
-    Available colours : black, lite green
-    Price : $251.89\n'''
-    "-Availability: In Stock\n\n"
+    \n\n
+    '''
+   
     
     "*Product 4:*\n"
     "- Name: IQOO Neo 9 Pro 5G\n"
