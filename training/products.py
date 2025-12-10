@@ -46,9 +46,7 @@ products=(
     \n\n'''
   
 
-   
-
-  "**Category-Earbuds**\n"
+    "**Category-Earbuds**\n"
     "*Product 1:*\n"
     "- Name: One Plus Nord Buds 2r\n"
     '''About this item
