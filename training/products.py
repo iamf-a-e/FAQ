@@ -92,7 +92,7 @@ products=(
 
     "**Category-Others**\n"
     "*Product 1:*\n"
-    "- Name: API-to-API\n"
+    "- Name: \n"
     '''About this item
     \n\n'''
    
