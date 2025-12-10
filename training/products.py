@@ -1,4 +1,4 @@
-         
+          
 products=(
     "**Category-AI and Automation**\n"
     "*Product 1:*\n"
