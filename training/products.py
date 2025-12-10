@@ -1,35 +1,24 @@
+ and 
+Internal business tools and workflow automation
+Custom dashboards and reporting systems
+Mobile or web applications
+System integrations (API-to-API, CRM, ERP, PSA, VoIP, etc.)
+Cloud tools, backend systems, and enterprise software
+
 products=(
-    "**Category-Phones**\n"
+    "**Category-AI and Automation**\n"
     "*Product 1:*\n"
-    "- Name: Motorola Edge 50 Pro 5G\n"
+    "- Name: AI Chatbots\n"
     '''About this item
-    Display : 6.7 inches, P-OLED, 1B colors, 144Hz, HDR10+ 2000 nits(peak) with resolution 1220 x 2712 pixels.
-    OS : Hello UI based on Android 14 (3 Years OS Upgrade / 4 Years of SMRs).
-    Camera : Rear Camera : 50 MP, f/1.4, 25mm (wide), 1/1.55", 1.0µm, multi-directional PDAF, Laser AF, OIS, 10MP Telephoto Lens with Samsung sensor, 3x Optical Zoom, 30X Hybrid zoom, Autofocus, Optical Image Stabilization (OIS), 13MP Ultrawide angle (120° FOV), Macro Vision, f/2.2 aperture, 1.12µm pixel size, Autofocus, LED flash, panorama, HDR. Front Camera : 50MP f/1.9 aperture with Samsung sensor, 0.64µm pixel size | Quad Pixel Technology for 1.28µm, Autofocus.
-    Processor : Snapdragon 7 Gen 3 Mobile Platform.
-    Memory : 12GB RAM, 256GB Storage, Connectivity : 5G/4G/3G/2G,
-    Charging : 125W TurboPower charging, Up to 50W* wireless charging, 10W wireless reverse charging.
-    Available Colours : Purple and Black with vegan leather design.
-    Other : Bluetooth 5.4, Wi-Fi 802.11 a/b/g/n/ac/ax, USB Type-C 3.1, NFC, GPS, A-GPS, Glonass, Galileo, Navic
-    Price : $419.83
-    1 year manufacturer warranty for device unit & 6 months for box accessories from date of purchase.\n
-    Availability : In Stock\n\n
+   We offer AI powered chatbots\n\n
     '''
   
     "*Product 2:*\n"
-    "- Name: Poco X6 Pro 5G\n"
+    "- Name: Automation Systems\n"
     '''About this item
-    Display : 6.67 inches, Dolby Vision, Contrast: 5,000,000:1, 68 Billion+ Colors, Corning Gorilla Glass Protected, 1920Hz PWM Dimming, 1800 Nits Peak Brightness, 2160Hz Instantaneous Touch Sampling Rate, Screen-to-Body Ratio: 94.27%, 120Hz 1.5K AMOLED Display.
-    OS : Xiaomi Hyper OS based on Android 14 (2 Years OS Upgrade)
-    Camera : Primary Camera : 64MP + 8MP + 2MP, Primary Camera Features : Triple Camera Setup 64MP Main Camera (f/1.79 Aperture, 1/1.2 inch Sensor Size, 0.7um (4-in-1) Pixel Size) + 8MP Ultra Wide Camera with Night Mode and Ultra Wide Video Recording + 2MP Macro Camera with Macro Video, Camera Features: 2X In-Sensor Lossless Zoom, Night Mode, Macro, Ultrawide, Documents Mode, Motion Tracking Focus, Portrait Mode with Beautify, Depth Control & Filters, AI Camera, Timed Burst, Tilt Shift, AI Beautify, Filters, Pro Mode, Panorama, Macro, Voice Shutter, Assist Cam, Long Exposure, HEIF Format, Video Features: 4K Video, Dual Video, Video Filters, Bokeh, Video Macro Mode, Ultrawide Video, Timelapse Mode, Steady Video, Short Film, Teleprompter, Motion Tracking Focus, HDR Video Recording, Slow Motion Video: Upto 1080 (at 960 fps),Secondary Camera : 16MP Front Camera, Secondary Camera Features : Front Camera Setup: 16MP, Camera Features: Portrait Mode, Screen Ring Light, Front Video Recording, Night Mode, Selfie Timer, Voice Shutter, Palm Shutter, Timed Burst, Panorama Selfies, Add Timestamp on Photos, Assist Cam, Short Film, Kaleidoscope, Slow Motion Selfie, Timelapse Selfie, Video Bokeh, HDR.
-    Processor : Mediatek Dimensity 8300 ultra.
-    Memory : 8/256GB and 12/512GB (RAM/ROM) variants available.
-    Charging : 67W TurboCharging 10W reverse charging.
-    Available colours : Black, Grey and Yellow(Yellow have vegan leather finish, other colour variants have plastic body).
-    Other : Bluetooth 5.4, Wi-Fi 802.11 a/b/g/n/ac/ax, USB Type-C 3.1, NFC, GPS, A-GPS, Glonass, Galileo, Navic, IR Blaster, No audio Jack.
-    Price : $287.88\n
+   \n\n
     '''
-    "-Availability: In Stock\n\n"
+    
     
     "*Product 3:*\n"
     "- Name: One Plus Nord 3 5G\n"
