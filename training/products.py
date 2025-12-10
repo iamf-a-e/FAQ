@@ -32,8 +32,7 @@ products=(
     '''About this item
     \n\n'''
    
-  
-    
+      
   "**Category-Custom**\n"
     "*Product 1:*\n"
     "- Name: HP Victus Gaming Laptop\n"
