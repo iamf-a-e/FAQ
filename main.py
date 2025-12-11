@@ -59,7 +59,7 @@ model = genai.GenerativeModel(model_name=model_name,
                               safety_settings=safety_settings)
 
 convo = model.start_chat(history=[])
-convo.send_message(instructions.instructions)
+#convo.send_message(instructions.instructions)
 
 
 def send(answer,sender,phone_id):
