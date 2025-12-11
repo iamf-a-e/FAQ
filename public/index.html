@@ -218,7 +218,7 @@ async function sendUserMessage() {
     typingIndicator.classList.add('active');
 
     try {
-        const response = await fetch("https://YOUR-VERCEL-APP.vercel.app/api/chat", {
+        const response = await fetch("https://faq-eta-three.vercel.app/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: messageText, user_id: "web_" + Date.now() })
