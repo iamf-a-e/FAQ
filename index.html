@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 20px; margin-bottom: 30px; }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+        }
+        .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin: 0 auto 30px; }
+
+        /* Cards */
+        .content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
+        .card h2 { color: #38bdf8; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .card p { color: #cbd5e1; line-height: 1.6; }
+
+        /* Floating Button */
+        .ai-agent-button {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 70px; height: 70px; border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; z-index: 1000;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+            transition: 0.3s ease; animation: pulse 2s infinite;
+        }
+        .ai-agent-button:hover { transform: scale(1.1); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.7); }
+        .notification {
+            position: absolute; top: -5px; right: -5px;
+            width: 22px; height: 22px; background: #ef4444;
+            border-radius: 50%; color: white; font-size: 12px;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; animation: bounce 1s infinite alternate;
+        }
+
+        /* Chatbox */
+        .chat-modal {
+            position: fixed; bottom: 110px; right: 30px;
+            width: 380px; height: 500px; background: rgba(15, 23, 42, 0.98);
+            border-radius: 20px; z-index: 1001; display: none;
+            flex-direction: column; overflow: hidden;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .chat-modal.active { display: flex; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .chat-header {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            padding: 20px; border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .agent-info { display: flex; align-items: center; gap: 15px; }
+        .agent-avatar {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            display: flex; justify-content: center; align-items: center;
+            color: white; font-size: 22px;
+        }
+        .agent-status { color: #10b981; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .status-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; }
+        .close-btn { background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer; }
+
+        .chat-body {
+            flex: 1; padding: 20px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .message { max-width: 80%; padding: 15px; border-radius: 18px; font-size: 15px; }
+        .agent-message { background: rgba(56, 189, 248, 0.15); align-self: flex-start; }
+        .user-message { background: rgba(129, 140, 248, 0.2); align-self: flex-end; }
+        .timestamp { font-size: 11px; color: #94a3b8; margin-top: 5px; }
+
+        .chat-footer { padding: 20px; }
+        .chat-input-container { display: flex; gap: 10px; }
+        .chat-input {
+            flex: 1; padding: 10px 15px; border-radius: 12px;
+            background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #f1f5f9;
+        }
+        .send-btn {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            border: none; border-radius: 12px; width: 50px;
+            color: white; font-size: 18px; cursor: pointer;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator { display: none; align-self: flex-start; background: rgba(56, 189, 248, 0.15); padding: 10px; border-radius: 18px; }
+        .typing-indicator.active { display: block; }
+        .typing-dots { display: flex; gap: 5px; }
+        .typing-dots span {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #38bdf8; opacity: 0.4;
+            animation: typing 1.4s infinite;
+        }
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> AI Agent Interface</h1>
+            <p class="subtitle">Click the AI agent in the bottom-right corner to start chatting.</p>
+        </header>
+
+        <div class="content">
+            <div class="card"><h2><i class="fas fa-brain"></i> Intelligent Assistance</h2><p>Ask anything and the AI will help.</p></div>
+            <div class="card"><h2><i class="fas fa-bolt"></i> Real-time Answering</h2><p>Powered by Gemini.</p></div>
+            <div class="card"><h2><i class="fas fa-shield-alt"></i> Secure</h2><p>Encrypted conversations.</p></div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="ai-agent-button" id="aiAgentButton">
+        <i class="fas fa-robot"></i>
+        <div class="notification">1</div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <div class="agent-info">
+                <div class="agent-avatar"><i class="fas fa-robot"></i></div>
+                <div>
+                    <h3>AI Assistant</h3>
+                    <div class="agent-status"><div class="status-dot"></div><span>Online</span></div>
+                </div>
+            </div>
+            <button class="close-btn" id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="message agent-message">
+                Hello! I'm your AI assistant. How can I help you today?
+                <div class="timestamp">Just now</div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type a message...">
+                <button class="send-btn" id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+<script>
+const aiAgentButton = document.getElementById('aiAgentButton');
+const chatModal = document.getElementById('chatModal');
+const closeChat = document.getElementById('closeChat');
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+const sendMessage = document.getElementById('sendMessage');
+const typingIndicator = document.getElementById('typingIndicator');
+const notification = document.querySelector('.notification');
+
+// OPEN CHAT
+aiAgentButton.onclick = () => {
+    chatModal.classList.add('active');
+    notification.style.display = 'none';
+    setTimeout(() => chatInput.focus(), 300);
+};
+
+// CLOSE CHAT
+closeChat.onclick = () => chatModal.classList.remove('active');
+
+// ADD MESSAGE TO CHAT
+function addMessageToChat(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'agent-message');
+    messageDiv.innerHTML = `${text}<div class="timestamp">${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div>`;
+    chatBody.appendChild(messageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// SEND MESSAGE TO BACKEND
+async function sendUserMessage() {
+    const messageText = chatInput.value.trim();
+    if (!messageText) return;
+
+    addMessageToChat(messageText, 'user');
+    chatInput.value = '';
+    typingIndicator.classList.add('active');
+
+    try {
+        const response = await fetch("https://faq-eta-three.vercel.app/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: messageText, user_id: "web_" + Date.now() })
+        });
+
+        const data = await response.json();
+        typingIndicator.classList.remove('active');
+
+        if (data.success) addMessageToChat(data.response, 'agent');
+        else addMessageToChat("⚠️ Error: " + data.error, 'agent');
+
+    } catch (err) {
+        typingIndicator.classList.remove('active');
+        addMessageToChat("⚠️ Network error: server unreachable.", 'agent');
+    }
+}
+
+sendMessage.onclick = sendUserMessage;
+chatInput.addEventListener("keypress", e => { if (e.key === "Enter") sendUserMessage(); });
+
+</script>
+
+</body>
+</html>
