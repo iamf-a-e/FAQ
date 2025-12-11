@@ -1,5 +1,6 @@
 import google.generativeai as genai
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import CORS
 import os 
 import logging
 from datetime import datetime, timedelta
@@ -14,6 +15,15 @@ name = "Fae"
 bot_name = "May"
 
 app = Flask(__name__)
+
+# Enable CORS for all domains on all routes
+CORS(app)
+
+# Or configure CORS with specific options:
+# CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "https://yourdomain.com"]}})
+# CORS(app, supports_credentials=True)  # If you need cookies/authentication
+
+# Configure Gemini API
 genai.configure(api_key=gen_api)
 
 generation_config = {
@@ -122,7 +132,7 @@ def index():
     })
 
 
-@app.route("/api/chat", methods=["POST"])
+@app.route("/api/chat", methods=["POST", "OPTIONS"])
 def chat_endpoint():
     """
     Main chat endpoint for processing messages.
@@ -137,6 +147,10 @@ def chat_endpoint():
         }
     }
     """
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+    
     try:
         data = request.get_json()
         
@@ -180,9 +194,13 @@ def chat_endpoint():
         }), 500
 
 
-@app.route("/api/conversation/history", methods=["GET"])
+@app.route("/api/conversation/history", methods=["GET", "OPTIONS"])
 def get_conversation_history():
     """Get the current conversation history"""
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+    
     try:
         history = []
         
@@ -211,9 +229,13 @@ def get_conversation_history():
         }), 500
 
 
-@app.route("/api/conversation/reset", methods=["POST"])
+@app.route("/api/conversation/reset", methods=["POST", "OPTIONS"])
 def reset_conversation():
     """Reset the conversation history"""
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+    
     try:
         global convo
         convo = model.start_chat(history=[])
@@ -234,9 +256,13 @@ def reset_conversation():
         }), 500
 
 
-@app.route("/api/health", methods=["GET"])
+@app.route("/api/health", methods=["GET", "OPTIONS"])
 def health_check():
     """Comprehensive health check endpoint"""
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+    
     try:
         # Test model connectivity
         test_response = model.generate_content("Hello")
@@ -260,9 +286,28 @@ def health_check():
         }), 500
 
 
+# Optional: Add custom CORS headers middleware for more control
+@app.after_request
+def after_request(response):
+    """
+    Add custom headers for CORS and security
+    """
+    # You can customize these headers based on your needs
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')  # If you need cookies
+    response.headers.add('X-Content-Type-Options', 'nosniff')
+    response.headers.add('X-Frame-Options', 'DENY')
+    return response
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     debug = os.environ.get("DEBUG", "False").lower() == "true"
+    
+    # Install required packages if not already installed
+    # pip install flask-cors
     
     app.run(
         host="0.0.0.0",
