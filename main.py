@@ -22,13 +22,13 @@ logging.basicConfig(level=logging.INFO)
 #If you need help setting up vercel postgres database, contact me on LinkedIn (link in profile).
 db=False 
 wa_token=os.environ.get("WA_TOKEN") # Whatsapp API Key
-#gen_api=os.environ.get("GEN_API") # Gemini API Key
+gen_api=os.environ.get("GEN_API") # Gemini API Key
 phone_id = os.environ.get("PHONE_ID")
 owner_phone=os.environ.get("OWNER_PHONE") # Owner's phone number with countrycode
-model_name="gemini-2.0-pro"
+model_name="gemini-2.0-flash"
 genai.configure(api_key=gen_api)
 name = "Fae"
-bot_name = "May" 
+bot_name = "May"
 
 app = Flask(__name__)
 genai.configure(api_key=gen_api)
