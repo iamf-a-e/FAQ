@@ -1,4 +1,4 @@
-faq_data = (
+faq_data = ( 
     "**About UmbrellaLABS**\n"  
     "*Question 1:*\n"
     "- What is UmbrellaLABS and what services do you provide? \n"
