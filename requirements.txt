@@ -4,4 +4,3 @@ pymupdf
 sqlalchemy
 urlextract
 psycopg2-binary
-flask-cors
