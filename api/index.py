@@ -22,13 +22,8 @@ app = Flask(__name__)
 
 # Configure CORS for frontend requests
 from flask_cors import CORS
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "https://iamf-a-e.github.io"
-        ]
-    }
-})
+CORS(app, resources={r"/api/*": {"origins": "https://iamf-a-e.github.io"}},
+     supports_credentials=True)
 
 # Gemini configuration
 generation_config = {
