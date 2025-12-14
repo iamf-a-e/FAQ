@@ -3,6 +3,7 @@ import google.generativeai as genai
 from flask import Flask, request, jsonify
 import os 
 import logging
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
