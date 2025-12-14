@@ -22,9 +22,9 @@ app = Flask(__name__)
 from flask_cors import CORS
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000", "https://your-website.com"],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
+        "origins": [
+            "https://iamf-a-e.github.io"
+        ]
     }
 })
 
