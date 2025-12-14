@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Configuration
 gen_api = os.environ.get("GEN_API")  # Gemini API Key
-model_name = "gemini-2.5-flash"  # or "gemini-pro" for free tier
+model_name = "gemini-pro"  # or "gemini-pro" for free tier
 
 # Configure Gemini
 genai.configure(api_key=gen_api)
