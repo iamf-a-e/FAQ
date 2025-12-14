@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Configuration
 gen_api = os.environ.get("GEN_API")  # Gemini API Key
-model_name = "gemini-2.5-flash"  # or "gemini-pro" for free tier
+model_name = "gemini-2.5-flash"
 
 # Configure Gemini
 genai.configure(api_key=gen_api)
@@ -146,7 +146,7 @@ def health_check():
     """Health check endpoint"""
     try:
         # Test Gemini API connection
-        test_model = genai.GenerativeModel('gemini-pro')
+        test_model = genai.GenerativeModel('gemini-2.5-flash')
         test_response = test_model.generate_content("Hello")
         
         return jsonify({
