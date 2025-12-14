@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import google.generativeai as genai
-import instructions
+
 
 logging.basicConfig(level=logging.INFO)
 
