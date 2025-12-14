@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 import os 
 import logging
 from datetime import datetime
-from training import instructions
+import instructions
 
 
 # Configure logging
