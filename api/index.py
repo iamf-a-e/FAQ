@@ -1,4 +1,4 @@
-# api/index.py
+
 import google.generativeai as genai
 from flask import Flask, request, jsonify
 import os 
