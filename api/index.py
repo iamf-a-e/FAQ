@@ -73,6 +73,7 @@ def home():
         }
     })
 
+
 @app.route('/api/chat', methods=['POST', 'OPTIONS'])
 def chat():
     if request.method == 'OPTIONS':
@@ -92,11 +93,23 @@ def chat():
         
         # Add system prompt if first message
         if len(convo.history) == 0:
-            system_prompt = """You are a helpful AI assistant. Provide clear, concise, and accurate responses. 
-            If you don't know something, admit it honestly. Always maintain a professional and friendly tone."""
+            # Try to load instructions from instructions.py
+            try:
+                # Since all files are in the same directory, we can import directly
+                from instructions import instructions as system_prompt
+            except ImportError as e:
+                logging.warning(f"Could not import instructions: {e}. Using default prompt.")
+                system_prompt = """You are a helpful AI assistant for Umbrella Labs. Provide clear, concise, and accurate responses. 
+                If you don't know something, admit it honestly. Always maintain a professional and friendly tone."""
+            except Exception as e:
+                logging.warning(f"Error loading instructions: {e}. Using default prompt.")
+                system_prompt = """You are a helpful AI assistant for Umbrella Labs. Provide clear, concise, and accurate responses. 
+                If you don't know something, admit it honestly. Always maintain a professional and friendly tone."""
+            
+            # Send the system prompt to start the conversation
             convo.send_message(system_prompt)
         
-        # Send message to Gemini
+        # Send user message to Gemini
         response = convo.send_message(message)
         
         # Extract response text
@@ -109,7 +122,14 @@ def chat():
         
         # Clean response if needed
         if "unable_to_solve_query" in answer:
-            answer = answer.replace("unable_to_solve_query", "I'm having difficulty with this query.")
+            answer = answer.replace("unable_to_solve_query", "I'm having difficulty with this query. Please contact our support team directly at 1300702720.")
+        
+        # Check for product_image keyword
+        if "product_image" in answer:
+            # You can add logic here to send images
+            # For now, just remove the keyword for clean response
+            answer = answer.replace("product_image", "")
+            # You could add: "I would show you an image of the product here."
         
         # Return response
         return jsonify({
@@ -125,6 +145,7 @@ def chat():
             "error": str(e),
             "status": "error"
         }), 500
+
 
 @app.route('/api/clear', methods=['POST'])
 def clear_history():
