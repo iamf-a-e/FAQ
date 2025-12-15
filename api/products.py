@@ -4,7 +4,24 @@ products=(
     "*Product 1:*\n"
     "- Name: AI Chatbots\n"
     '''About this item
-    We offer AI powered chatbots\n\n
+    We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch.
+
+    *What our chatbots do*
+    
+    i) Understand natural language for seamless, human-like conversations    
+    ii) Provide instant answers to FAQs, product information, policies, and pricing    
+    iii)Guide users through processes such as bookings, forms, and onboarding    
+    iv) Operate 24/7 with consistent performance    
+    v) Improve over time using real interaction data    
+    vi) Escalate conversations smoothly to human agents when needed
+    
+    *Where they work*
+    
+    i) Websites and web applications    
+    ii) WhatsApp (Meta API)    
+    iii) Facebook Messenger    
+    iv) Mobile applications    
+    v) Custom internal systems (CRM, ERP, databases)\n\n
     '''
   
     "*Product 2:*\n" 
