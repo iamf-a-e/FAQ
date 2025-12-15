@@ -7,7 +7,7 @@ products=(
     We offer AI powered chatbots\n\n
     '''
   
-    "*Product 2:*\n"
+    "*Product 2:*\n" 
     "- Name: Automation Systems\n"
     '''About this item
     \n\n
