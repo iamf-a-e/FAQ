@@ -355,19 +355,80 @@ products=(
     "*Product 1:*\n"
     "- Name: Cloud Tools\n"
     '''About this item
-    \n\n'''
+    We design and develop comprehensive Cloud Tools and platforms that empower businesses to leverage scalable, secure, and efficient cloud infrastructure and services. Our cloud solutions enable digital transformation, operational agility, and cost optimization through modern cloud-native architectures and management capabilities.
+    
+    What our Cloud Tools do
+    
+    i) Provision and manage cloud infrastructure and virtual resources  
+    ii) Automate deployment, scaling, and orchestration of applications  
+    iii) Monitor cloud performance, costs, and security compliance  
+    iv) Enable data backup, disaster recovery, and business continuity  
+    v) Facilitate containerization and microservices management  
+    vi) Provide identity and access management across cloud services  
+    vii) Support multi-cloud and hybrid cloud environment management
+    
+    Where they work
+    
+    i) Cloud migration and digital transformation initiatives  
+    ii) DevOps practices and continuous integration/continuous deployment (CI/CD)  
+    iii) Big data processing and analytics platforms  
+    iv) SaaS application development and deployment  
+    v) Enterprise IT infrastructure modernization projects  
+    vi) Startups and scalable web application hosting  
+    vii) Organizations adopting cloud-native architectures and services'''
 
 
      "*Product 2:*\n"
      "- Name: Backend Systems\n"
      '''About this item
-     \n\n'''
+    We design and develop robust Backend Systems that power applications with reliable, scalable, and efficient server-side logic, data management, and integration capabilities. Our backend solutions form the core foundation that enables seamless user experiences, business process automation, and secure data operations.
+    
+    What our Backend Systems do
+    
+    i) Process business logic, data validation, and application workflows  
+    ii) Manage databases, data storage, and retrieval operations  
+    iii) Handle user authentication, authorization, and security protocols  
+    iv) Provide RESTful APIs, GraphQL endpoints, and service interfaces  
+    v) Execute background jobs, scheduled tasks, and batch processing  
+    vi) Enable real-time data processing and event-driven architectures  
+    vii) Support scalability, load balancing, and high availability configurations
+    
+    Where they work
+    
+    i) Web applications and mobile app backends  
+    ii) E-commerce platforms and payment processing systems  
+    iii) Enterprise software and business process automation  
+    iv) IoT platforms and connected device management  
+    v) Gaming servers and multiplayer platforms  
+    vi) Financial systems and transaction processing  
+    vii) Custom backend solutions for specific industry requirements''''
+    
 
-
-     "*Product 3:*\n"
-     "- Name: Enterprise Software\n"
-     '''About this item
-     \n\n'''
+    "*Product 3:*\n"
+    "- Name: Enterprise Software\n"
+    '''About this item
+    We design and develop comprehensive Enterprise Software solutions that address complex organizational needs, streamline operations, and drive business growth at scale. Our enterprise systems integrate multiple business functions, ensure data integrity, and provide the reliability required for mission-critical operations across large organizations.
+    
+    What our Enterprise Software does
+    
+    i) Automate and optimize core business processes and workflows  
+    ii) Integrate across departments, systems, and data sources  
+    iii) Ensure data security, compliance, and audit capabilities  
+    iv) Provide role-based access control and permission management  
+    v) Deliver real-time analytics, reporting, and decision support  
+    vi) Support scalability for growing user bases and data volumes  
+    vii) Enable customization and configuration for specific business rules
+    
+    Where they works
+    
+    i) Large corporations and multinational organizations  
+    ii) Government agencies and public sector institutions  
+    iii) Healthcare systems and hospital networks  
+    iv) Financial institutions and banking operations  
+    v) Manufacturing and supply chain enterprises  
+    vi) Educational institutions and university systems  
+    vii) Any organization requiring robust, scalable, and integrated business solutions'''
+      
 )
    
 
