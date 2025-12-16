@@ -250,8 +250,28 @@ products=(
     "*Product 2:*\n"
     "- Name: CRM\n"
     '''About this item
-    \n\n'''
-
+    We design and develop comprehensive Customer Relationship Management (CRM) systems that centralize customer interactions, streamline sales processes, and enhance customer service. Our CRM solutions transform how businesses manage relationships, automate workflows, and drive growth through data-driven insights.
+    
+    What our CRM systems do
+    
+    i) Centralize customer data, interaction history, and communication records  
+    ii) Automate sales pipelines, lead tracking, and opportunity management  
+    iii) Enable marketing campaign management and customer segmentation  
+    iv) Provide customer service ticketing and support case management  
+    v) Generate analytics, reports, and performance dashboards  
+    vi) Integrate with email, calendar, communication tools, and third-party services  
+    vii) Support mobile access and remote team collaboration
+    
+    Where they work
+    
+    i) Sales teams and business development departments  
+    ii) Customer support and service centers  
+    iii) Marketing departments and campaign management  
+    iv) E-commerce and retail customer management  
+    v) B2B relationship and account management  
+    vi) Real estate, insurance, and financial services  
+    vii) Custom CRM solutions for specific industries and business models'''
+    
 
     "*Product 3:*\n"
     "- Name: ERP\n"
