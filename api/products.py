@@ -2,7 +2,7 @@
 products=( 
     "**Category-AI and Automation**\n"
     "*Product 1:*\n"
-    "- Name: AI Chatbots\n"
+    "- Name: AI Chatbots (also called AI Agents, AI Assistants, Virtual Assistants)\n"
     '''About this item
     We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch. \n\n
 
