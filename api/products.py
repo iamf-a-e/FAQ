@@ -328,7 +328,27 @@ products=(
     "*Product 5:*\n"
     "- Name: VoIP\n"
     '''About this item
-    \n\n'''
+    We design and develop advanced Voice over Internet Protocol (VoIP) solutions that transform business communications through internet-based telephony. Our VoIP systems provide reliable, scalable, and feature-rich alternatives to traditional phone systems, enabling seamless voice and video communication across locations and devices.
+    
+    What our VoIP solutions do
+    
+    i) Enable high-quality voice and video calls over internet connections  
+    ii) Support call routing, auto-attendant, and interactive voice response (IVR) systems  
+    iii) Provide voicemail to email transcription and visual voicemail  
+    iv) Facilitate conference calling, call recording, and monitoring  
+    v) Integrate with CRM, helpdesk, and business applications  
+    vi) Enable softphone applications for desktop and mobile devices  
+    vii) Offer detailed call analytics, reporting, and real-time dashboards
+    
+    Where they work
+    
+    i) Business offices and corporate headquarters  
+    ii) Remote teams and distributed workforce environments  
+    iii) Call centers and customer support operations  
+    iv) Healthcare facilities and telemedicine services  
+    v) Educational institutions and online learning platforms  
+    vi) Hospitality industry and customer service departments  
+    vii) Any organization seeking cost-effective, flexible communication solutions'''
 
 
     "**Category-Others**\n"
