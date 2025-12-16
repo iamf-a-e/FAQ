@@ -4,16 +4,16 @@ products=(
     "*Product 1:*\n"
     "- Name: AI Chatbots\n"
     '''About this item
-    We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch.
+    We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch. /n/n
 
-    *What our chatbots do*
+    What our chatbots do /n/n
     
-    i) Understand natural language for seamless, human-like conversations    
-    ii) Provide instant answers to FAQs, product information, policies, and pricing    
-    iii)Guide users through processes such as bookings, forms, and onboarding    
-    iv) Operate 24/7 with consistent performance    
-    v) Improve over time using real interaction data    
-    vi) Escalate conversations smoothly to human agents when needed
+    i) Understand natural language for seamless, human-like conversations /n   
+    ii) Provide instant answers to FAQs, product information, policies, and pricing /n   
+    iii)Guide users through processes such as bookings, forms, and onboarding /n   
+    iv) Operate 24/7 with consistent performance /n   
+    v) Improve over time using real interaction data /n    
+    vi) Escalate conversations smoothly to human agents when needed /n
     
     *Where they work*
     
