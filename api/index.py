@@ -1,37 +1,33 @@
-
 import google.generativeai as genai
 from flask import Flask, request, jsonify
-import os 
+from flask_cors import CORS
+import os
 import logging
 from datetime import datetime
-#import instructions
 
-# Configure logging
+# ===============================
+# CONFIGURATION
+# ===============================
+
 logging.basicConfig(level=logging.INFO)
 
-# Configuration
-gen_api = os.environ.get("GEN_API")  # Gemini API Key
-model_name = "gemini-2.5-flash"
+GEN_API_KEY = os.environ.get("GEN_API")
+MODEL_NAME = "gemini-2.5-flash"
 
-# Configure Gemini
-genai.configure(api_key=gen_api)
+if not GEN_API_KEY:
+    raise RuntimeError("GEN_API environment variable not set")
 
-# Initialize Flask app
-app = Flask(__name__)
+genai.configure(api_key=GEN_API_KEY)
 
-# Configure CORS for frontend requests
-from flask_cors import CORS
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "https://iamf-a-e.github.io"
-        ]
-    }
-})
+# Load system instructions ONCE
+from instructions import instructions as SYSTEM_PROMPT
 
-# Gemini configuration
+# ===============================
+# GEMINI MODEL
+# ===============================
+
 generation_config = {
-    "temperature": 0.7,
+    "temperature": 0.6,
     "top_p": 0.9,
     "top_k": 40,
     "max_output_tokens": 2048,
@@ -44,138 +40,150 @@ safety_settings = [
     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
 ]
 
-# Initialize the model
 model = genai.GenerativeModel(
-    model_name=model_name,
+    model_name=MODEL_NAME,
+    system_instruction=SYSTEM_PROMPT,  # 🔒 STRONG ENFORCEMENT
     generation_config=generation_config,
     safety_settings=safety_settings
 )
 
-# Global conversation storage (for demo purposes)
-# In production, use a database like Redis or Vercel Postgres
+# ===============================
+# FLASK APP
+# ===============================
+
+app = Flask(__name__)
+
+CORS(app, resources={
+    r"/api/*": {
+        "origins": ["https://iamf-a-e.github.io"]
+    }
+})
+
+# ===============================
+# CONVERSATION STORAGE
+# NOTE: For production, replace with Redis / DB
+# ===============================
+
 conversations = {}
 
-def get_conversation(session_id):
-    """Get or create a conversation session"""
+def get_conversation(session_id: str):
     if session_id not in conversations:
-        conversations[session_id] = model.start_chat(history=[])
+        conversations[session_id] = model.start_chat(
+            history=[
+                {
+                    "role": "user",
+                    "parts": [SYSTEM_PROMPT]
+                }
+            ]
+        )
     return conversations[session_id]
 
-@app.route('/')
+# ===============================
+# HARD SCOPE FILTER (IMPORTANT)
+# ===============================
+
+ALLOWED_KEYWORDS = [
+    "umbrella",
+    "umbrella labs",
+    "ai",
+    "chatbot",
+    "software",
+    "automation",
+    "integration",
+    "api",
+    "system",
+    "platform",
+    "support",
+    "services",
+]
+
+def is_in_scope(message: str) -> bool:
+    msg = message.lower()
+    return any(keyword in msg for keyword in ALLOWED_KEYWORDS)
+
+# ===============================
+# ROUTES
+# ===============================
+
+@app.route("/")
 def home():
     return jsonify({
         "status": "AI Agent API is running",
-        "model": model_name,
-        "endpoints": {
-            "/api/chat": "POST - Chat with AI agent",
-            "/api/clear": "POST - Clear conversation history",
-            "/api/health": "GET - Health check"
-        }
+        "model": MODEL_NAME
     })
 
-
-@app.route('/api/chat', methods=['POST', 'OPTIONS'])
+@app.route("/api/chat", methods=["POST", "OPTIONS"])
 def chat():
-    if request.method == 'OPTIONS':
-        return '', 200
-    
+    if request.method == "OPTIONS":
+        return "", 200
+
     try:
-        data = request.json
-        message = data.get('message', '')
-        session_id = data.get('session_id', 'default')
-        stream = data.get('stream', False)
-        
+        data = request.json or {}
+        message = data.get("message", "").strip()
+        session_id = data.get("session_id", "default")
+
         if not message:
             return jsonify({"error": "Message is required"}), 400
-        
-        # Get conversation for this session
+
+        # 🔒 HARD SCOPE ENFORCEMENT
+        if not is_in_scope(message):
+            return jsonify({
+                "response": (
+                    "I’m here to assist with questions related to "
+                    "Umbrella Labs’ products and services. How may I help you?"
+                ),
+                "needs_human": False,
+                "session_id": session_id,
+                "status": "success"
+            })
+
         convo = get_conversation(session_id)
-        
-        # Add system prompt if first message
-        if len(convo.history) == 0:
-            # Try to load instructions from instructions.py
-            try:
-                # Since all files are in the same directory, we can import directly
-                from instructions import instructions as system_prompt
-            except ImportError as e:
-                logging.warning(f"Could not import instructions: {e}. Using default prompt.")
-                system_prompt = """You are a helpful AI assistant for Umbrella Labs. Provide clear, concise, and accurate responses. 
-                If you don't know something, admit it honestly. Always maintain a professional and friendly tone."""
-            except Exception as e:
-                logging.warning(f"Error loading instructions: {e}. Using default prompt.")
-                system_prompt = """You are a helpful AI assistant for Umbrella Labs. Provide clear, concise, and accurate responses. 
-                If you don't know something, admit it honestly. Always maintain a professional and friendly tone."""
-            
-            # Send the system prompt to start the conversation
-            convo.send_message(system_prompt)
-        
-        # Send user message to Gemini
         response = convo.send_message(message)
-        
-        # Extract response text
-        if hasattr(response, 'text'):
-            answer = response.text
-        elif hasattr(response, '_result'):
-            answer = response._result.candidates[0].content.parts[0].text
-        else:
-            answer = str(response)
-        
-        # Clean response if needed
-        if "unable_to_solve_query" in answer:
-            answer = answer.replace("unable_to_solve_query", "I'm having difficulty with this query. Please contact our support team directly at 1300702720.")
-        
-        # Check for product_image keyword
-        if "product_image" in answer:
-            # You can add logic here to send images
-            # For now, just remove the keyword for clean response
-            answer = answer.replace("product_image", "")
-            # You could add: "I would show you an image of the product here."
-        
-        # Return response
+
+        answer = response.text if hasattr(response, "text") else str(response)
+
+        # 🔍 CHECK FOR UNRESOLVED TOKEN
+        needs_human = "unable_to_solve_query" in answer
+
+        # CLEAN USER RESPONSE (DO NOT SHOW TOKEN)
+        clean_answer = answer.replace("unable_to_solve_query", "").strip()
+
         return jsonify({
-            "response": answer,
+            "response": clean_answer,
+            "needs_human": needs_human,
             "session_id": session_id,
-            "tokens_used": len(message.split()) + len(answer.split()),  # Approximate
             "status": "success"
         })
-        
+
     except Exception as e:
-        logging.error(f"Error in chat endpoint: {str(e)}")
+        logging.error(f"Chat error: {str(e)}")
         return jsonify({
-            "error": str(e),
+            "error": "Internal server error",
             "status": "error"
         }), 500
 
-
-@app.route('/api/clear', methods=['POST'])
+@app.route("/api/clear", methods=["POST"])
 def clear_history():
-    """Clear conversation history for a session"""
     try:
-        data = request.json
-        session_id = data.get('session_id', 'default')
-        
-        if session_id in conversations:
-            del conversations[session_id]
-        
+        session_id = (request.json or {}).get("session_id", "default")
+        conversations.pop(session_id, None)
+
         return jsonify({
-            "message": f"Conversation history cleared for session {session_id}",
+            "message": f"Conversation cleared for session {session_id}",
             "status": "success"
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/health', methods=['GET'])
+@app.route("/api/health", methods=["GET"])
 def health_check():
-    """Health check endpoint"""
     try:
-        # Test Gemini API connection
-        test_model = genai.GenerativeModel('gemini-2.5-flash')
-        test_response = test_model.generate_content("Hello")
-        
+        test = genai.GenerativeModel(MODEL_NAME)
+        test.generate_content("Health check")
+
         return jsonify({
             "status": "healthy",
-            "model": model_name,
-            "gemini_connected": True,
+            "model": MODEL_NAME,
             "timestamp": str(datetime.now())
         })
     except Exception as e:
@@ -184,59 +192,10 @@ def health_check():
             "error": str(e)
         }), 500
 
-@app.route('/api/upload', methods=['POST'])
-def upload_file():
-    """Handle file uploads (images, PDFs, etc.)"""
-    try:
-        if 'file' not in request.files:
-            return jsonify({"error": "No file provided"}), 400
-        
-        file = request.files['file']
-        session_id = request.form.get('session_id', 'default')
-        
-        if file.filename == '':
-            return jsonify({"error": "No file selected"}), 400
-        
-        # Save file temporarily (Vercel serverless has /tmp directory)
-        import tempfile
-        import uuid
-        
-        filename = f"/tmp/{uuid.uuid4()}_{file.filename}"
-        file.save(filename)
-        
-        # Upload to Gemini
-        uploaded_file = genai.upload_file(filename)
-        
-        # Process with Gemini
-        convo = get_conversation(session_id)
-        prompt = "Analyze this file and describe what you see."
-        response = convo.send_message([prompt, uploaded_file])
-        
-        # Clean up
-        os.remove(filename)
-        
-        return jsonify({
-            "response": response.text,
-            "filename": file.filename,
-            "session_id": session_id,
-            "status": "success"
-        })
-        
-    except Exception as e:
-        logging.error(f"Error uploading file: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+# ===============================
+# LOCAL DEV ONLY
+# ===============================
 
-# Error handlers
-@app.errorhandler(404)
-def not_found(error):
-    return jsonify({"error": "Endpoint not found"}), 404
-
-@app.errorhandler(500)
-def internal_error(error):
-    return jsonify({"error": "Internal server error"}), 500
-
-# Vercel requires this structure
-# No need for app.run() in serverless environment
 if __name__ == "__main__":
-    # Only run locally for testing
     app.run(debug=True, port=8000)
+
