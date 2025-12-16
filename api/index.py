@@ -19,12 +19,11 @@ if not GEN_API_KEY:
 
 genai.configure(api_key=GEN_API_KEY)
 
-# Load system instructions ONCE
+# Load system instructions (STATIC, SAFE)
 from .instructions import instructions as SYSTEM_PROMPT
 
-
 # ===============================
-# GEMINI MODEL
+# GEMINI MODEL (SAFE INIT)
 # ===============================
 
 generation_config = {
@@ -41,9 +40,9 @@ safety_settings = [
     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
 ]
 
+# ❌ DO NOT pass system_instruction here (SDK crash)
 model = genai.GenerativeModel(
     model_name=MODEL_NAME,
-    system_instruction=SYSTEM_PROMPT,  # 🔒 STRONG ENFORCEMENT
     generation_config=generation_config,
     safety_settings=safety_settings
 )
@@ -62,12 +61,16 @@ CORS(app, resources={
 
 # ===============================
 # CONVERSATION STORAGE
-# NOTE: For production, replace with Redis / DB
+# (Replace with Redis in production)
 # ===============================
 
 conversations = {}
 
 def get_conversation(session_id: str):
+    """
+    Creates a chat session with SYSTEM_PROMPT injected
+    safely via chat history (SDK compatible)
+    """
     if session_id not in conversations:
         conversations[session_id] = model.start_chat(
             history=[
@@ -80,7 +83,7 @@ def get_conversation(session_id: str):
     return conversations[session_id]
 
 # ===============================
-# HARD SCOPE FILTER (IMPORTANT)
+# HARD SCOPE FILTER
 # ===============================
 
 ALLOWED_KEYWORDS = [
@@ -143,10 +146,10 @@ def chat():
 
         answer = response.text if hasattr(response, "text") else str(response)
 
-        # 🔍 CHECK FOR UNRESOLVED TOKEN
+        # 🔍 HUMAN ESCALATION TOKEN
         needs_human = "unable_to_solve_query" in answer
 
-        # CLEAN USER RESPONSE (DO NOT SHOW TOKEN)
+        # CLEAN RESPONSE
         clean_answer = answer.replace("unable_to_solve_query", "").strip()
 
         return jsonify({
@@ -179,8 +182,8 @@ def clear_history():
 @app.route("/api/health", methods=["GET"])
 def health_check():
     try:
-        test = genai.GenerativeModel(MODEL_NAME)
-        test.generate_content("Health check")
+        test_model = genai.GenerativeModel(MODEL_NAME)
+        test_model.generate_content("Health check")
 
         return jsonify({
             "status": "healthy",
@@ -199,4 +202,3 @@ def health_check():
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
-
