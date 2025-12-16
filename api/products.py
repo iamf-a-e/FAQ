@@ -197,8 +197,27 @@ products=(
     "*Product 2:*\n"
     "- Name: Web Applications\n"    
     '''About this item
-    We offer custom web applications tailored to your taste
-    \n\n'''
+    We design and develop high-quality web applications that deliver fast, intuitive, and engaging user experiences. Our web apps are built to solve real business problems, connect users directly via browsers, and integrate seamlessly with backend systems, databases, and third-party digital services.
+    
+    What our web applications do
+    
+    i) Provide intuitive, responsive, and user-friendly interfaces accessible from any device  
+    ii) Enable secure user authentication, authorization, and profile management  
+    iii) Support real-time data interaction, dynamic updates, and synchronization  
+    iv) Integrate with RESTful APIs, databases, microservices, and cloud platforms  
+    v) Deliver notifications, alerts, and live chat functionalities  
+    vi) Operate across browsers and platforms with consistent performance  
+    vii) Scale efficiently with user demand and modular architecture  
+    
+    Where they work
+    
+    i) All major browsers (Chrome, Safari, Firefox, Edge)  
+    ii) Business and enterprise web portals & dashboards  
+    iii) E-commerce platforms and online service applications  
+    iv) Customer relationship management (CRM) and support systems  
+    v) Content management systems (CMS) and collaboration tools  
+    vi) SaaS products, fintech, healthcare, and education platforms  
+    vii) Custom web solutions tailored to specific organizational workflows'''
     
 
     "**Category-System Integrations**\n"
