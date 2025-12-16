@@ -42,7 +42,7 @@ PRODUCT & SERVICES INFORMATION:
 Use ONLY the information below when answering product or service questions.
 Do NOT invent features, prices, or services.
 
-{products.products}
+{products}
 
 RESPONSE RULES:
 - Be factual and accurate
