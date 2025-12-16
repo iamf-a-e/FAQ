@@ -112,7 +112,29 @@ products=(
     "*Product 1:*\n"
     "- Name: Custom Dashboards\n"
     '''About this item
-    \n\n'''
+    We design and develop custom dashboards that transform raw data into clear, actionable insights. Our dashboards are tailored to your business needs, giving teams and decision-makers real-time visibility into performance, trends, and key metrics—all in one intuitive interface.
+    
+    What our custom dashboards do
+    
+    i) Visualize key performance indicators (KPIs) in real time  
+    ii) Aggregate data from multiple sources into a single view  
+    iii) Provide interactive charts, tables, and reports  
+    iv) Enable role-based access and personalized views  
+    v) Track trends, targets, and anomalies for faster decision-making  
+    vi) Support data filtering, exports, and drill-down analysis  
+    vii) Improve transparency and accountability across teams  
+    
+    Where they work
+    
+    i) Web-based dashboards and admin panels  
+    ii) Executive and management reporting systems  
+    iii) Sales, marketing, and CRM analytics  
+    iv) Finance and accounting performance tracking  
+    v) Operations and logistics monitoring  
+    vi) HR and workforce analytics  
+    vii) Custom internal and client-facing platforms
+    '''
+
     
 
     "*Product 2:*\n"
