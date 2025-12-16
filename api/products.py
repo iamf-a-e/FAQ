@@ -83,12 +83,34 @@ products=(
     "*Product 4:*\n"
     "- Name: Workflow Automation\n"
     '''About this item
-    \n\n'''
+    We design intelligent workflow automation solutions that streamline business processes, eliminate manual bottlenecks, and ensure tasks move efficiently from start to finish. Our workflow automation systems improve speed, consistency, and accountability across teams and departments.
+    
+    What our workflow automation solutions do
+    
+    i) Automate multi-step business processes and approvals  
+    ii) Route tasks automatically to the right people or systems  
+    iii) Trigger actions based on events, conditions, or schedules  
+    iv) Reduce delays caused by manual handoffs and follow-ups  
+    v) Enforce business rules and process consistency  
+    vi) Track progress, deadlines, and process performance in real time  
+    vii) Integrate seamlessly with existing tools and databases  
+    
+    Where they work
+    
+    i) HR workflows (onboarding, leave requests, approvals)  
+    ii) Finance workflows (invoicing, expense approvals, payments)  
+    iii) Sales and marketing pipelines  
+    iv) Customer support and service processes  
+    v) Operations, procurement, and supply chain workflows  
+    vi) Compliance and audit processes  
+    vii) Custom internal and external business systems
+    '''
+
     
       
   "**Category-Custom**\n"
     "*Product 1:*\n"
-    "- Name: Custom dashboards\n"
+    "- Name: Custom Dashboards\n"
     '''About this item
     \n\n'''
     
