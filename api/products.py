@@ -140,7 +140,29 @@ products=(
     "*Product 2:*\n"
     "- Name: Reporting Systems\n"
     '''About this item
-    \n\n'''
+    We build reliable and scalable reporting systems that help organizations collect, analyze, and present data in a clear and meaningful way. Our reporting solutions enable informed decision-making by turning complex data into accurate, timely, and easy-to-understand reports.
+    
+    What our reporting systems do
+    
+    i) Automatically collect and consolidate data from multiple sources  
+    ii) Generate scheduled and on-demand reports  
+    iii) Produce accurate summaries, trends, and performance insights  
+    iv) Support customizable report formats (tables, charts, exports)  
+    v) Ensure data consistency and auditability  
+    vi) Enable role-based access to sensitive information  
+    vii) Reduce manual reporting effort and errors  
+    
+    Where they work
+    
+    i) Finance and accounting reporting  
+    ii) Sales and marketing performance analysis  
+    iii) Operations and supply chain reporting  
+    iv) HR and workforce analytics  
+    v) Compliance, audit, and regulatory reporting  
+    vi) Executive and management reporting  
+    vii) Custom internal and external reporting platforms
+    '''
+
   
 
     "**Category-Applications**\n"
