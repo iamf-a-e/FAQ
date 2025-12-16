@@ -39,10 +39,7 @@ COMPANY DETAILS:
 - Website: {company_website}
 
 PRODUCT & SERVICES INFORMATION:
-Use ONLY the information below when answering product or service questions.
-Do NOT invent features, prices, or services.
-
-{products}
+Use ONLY the information in {products} when answering about products or services.
 
 RESPONSE RULES:
 - Be factual and accurate
