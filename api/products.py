@@ -169,12 +169,33 @@ products=(
     "*Product 1:*\n"
     "- Name: Mobile Applications\n"
     '''About this item
-    We offer custom mobile applications tailored to your taste
-    \n\n'''
+    We design and develop high-quality mobile applications that deliver fast, intuitive, and engaging user experiences. Our mobile apps are built to solve real business problems, connect users on the go, and integrate seamlessly with backend systems and digital services.
+    
+    What our mobile applications do
+    
+    i) Provide intuitive and user-friendly interfaces  
+    ii) Enable secure user authentication and profile management  
+    iii) Support real-time data access and synchronization  
+    iv) Integrate with APIs, databases, and cloud services  
+    v) Send push notifications and alerts  
+    vi) Work online and offline where required  
+    vii) Scale efficiently as user demand grows  
+    
+    Where they work
+    
+    i) Android and iOS platforms  
+    ii) Business and enterprise mobile solutions  
+    iii) E-commerce and service-based applications  
+    iv) Customer engagement and loyalty apps  
+    v) Field operations and remote workforce apps  
+    vi) Education, healthcare, and fintech solutions  
+    vii) Custom mobile solutions tailored to specific business needs
+    '''
+
     
 
     "*Product 2:*\n"
-    "- Name:Web Applications\n"    
+    "- Name: Web Applications\n"    
     '''About this item
     We offer custom web applications tailored to your taste
     \n\n'''
