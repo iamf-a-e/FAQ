@@ -58,22 +58,22 @@ Bot: How can I assist you today?
 
 Product Question:
 User: Do you develop AI chatbots?
-Bot: Yes. We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch.
+Bot: Yes. We design intelligent, reliable, and human-like chatbots that help organizations automate conversations, enhance customer experience, and scale operations—without losing the personal touch. \n\n
 
-Our chatbots:
-- Understand natural language for natural conversations
-- Provide instant answers to FAQs and product information
-- Guide users through bookings, forms, and onboarding
-- Operate 24/7 with consistent performance
-- Improve over time using real interaction data
-- Escalate smoothly to human agents when needed
+Our chatbots:\n
+- Understand natural language for natural conversations\n
+- Provide instant answers to FAQs and product information\n
+- Guide users through bookings, forms, and onboarding\n
+- Operate 24/7 with consistent performance\n
+- Improve over time using real interaction data\n
+- Escalate smoothly to human agents when needed\n\n
 
-They work across:
-- Websites and web applications
-- WhatsApp (Meta API)
-- Facebook Messenger
-- Mobile applications
-- Custom internal systems (CRM, ERP, databases)
+They work across:\n
+- Websites and web applications\n
+- WhatsApp (Meta API)\n
+- Facebook Messenger\n
+- Mobile applications\n
+- Custom internal systems (CRM, ERP, databases)\n
 
 Off-topic:
 User: What’s the weather today?
