@@ -224,7 +224,27 @@ products=(
     "*Product 1:*\n"
     "- Name: API-to-API\n"
     '''About this item
-    \n\n'''
+    We design and develop robust API-to-API integration solutions that enable seamless, secure, and scalable communication between different software systems, applications, and services. Our integration architecture ensures reliable data exchange, process automation, and unified operations across your digital ecosystem.
+    
+    What our API-to-API integrations do
+    
+    i) Establish secure, authenticated connections between APIs using OAuth, API keys, or tokens  
+    ii) Enable real-time data synchronization and event-driven workflows  
+    iii) Transform and map data between different formats and structures  
+    iv) Implement error handling, retry logic, and failure recovery mechanisms  
+    v) Monitor API health, performance metrics, and usage analytics  
+    vi) Support both RESTful APIs and legacy SOAP/web services  
+    vii) Provide comprehensive logging and audit trails for all transactions
+    
+    Where they work
+    
+    i) Enterprise system integration (ERP, CRM, HRMS)  
+    ii) E-commerce and payment gateway connections  
+    iii) Third-party service automation and webhook implementations  
+    iv) Microservices architecture and internal API mesh  
+    v) Data pipeline and business intelligence integrations  
+    vi) Cloud service automation (AWS, Azure, Google Cloud)  
+    vii) Custom middleware solutions for specific business workflows'''
  
 
     "*Product 2:*\n"
