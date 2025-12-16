@@ -20,7 +20,8 @@ if not GEN_API_KEY:
 genai.configure(api_key=GEN_API_KEY)
 
 # Load system instructions ONCE
-from instructions import instructions as SYSTEM_PROMPT
+from .instructions import instructions as SYSTEM_PROMPT
+
 
 # ===============================
 # GEMINI MODEL
