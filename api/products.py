@@ -276,8 +276,28 @@ products=(
     "*Product 3:*\n"
     "- Name: ERP\n"
     '''About this item
-    \n\n'''
-
+    We design and develop comprehensive Enterprise Resource Planning (ERP) systems that integrate and automate core business processes across departments. Our ERP solutions provide real-time visibility, operational efficiency, and data-driven decision-making capabilities for organizations of all sizes.
+    
+    What our ERP systems do
+    
+    i) Integrate finance, accounting, and financial reporting modules  
+    ii) Manage inventory, supply chain, and procurement processes  
+    iii) Handle human resources, payroll, and employee management  
+    iv) Streamline manufacturing, production planning, and quality control  
+    v) Automate sales, customer relationship, and order management  
+    vi) Provide business intelligence, analytics, and real-time dashboards  
+    vii) Support compliance, risk management, and audit requirements
+    
+    Where they work
+    
+    i) Manufacturing and production facilities  
+    ii) Distribution, logistics, and supply chain operations  
+    iii) Retail, wholesale, and e-commerce businesses  
+    iv) Service-based industries and professional firms  
+    v) Healthcare systems and hospital management  
+    vi) Educational institutions and nonprofit organizations  
+    vii) Multi-location enterprises with complex operational needs'''
+    
 
     "*Product 4:*\n"
     "- Name: PSA\n"
