@@ -302,7 +302,27 @@ products=(
     "*Product 4:*\n"
     "- Name: PSA\n"
     '''About this item
-    \n\n'''
+    We design and develop comprehensive Professional Services Automation (PSA) platforms that optimize service delivery, project management, and resource allocation for professional services organizations. Our PSA solutions streamline operations, improve profitability, and enhance client satisfaction through integrated workflows and real-time visibility.
+    
+    What our PSA platforms do
+    
+    i) Manage end-to-end project planning, tracking, and delivery  
+    ii) Allocate resources efficiently based on skills, availability, and project needs  
+    iii) Track time, expenses, and billing with automated workflows  
+    iv) Provide financial management including budgeting, forecasting, and profitability analysis  
+    v) Facilitate client collaboration and portal access for project visibility  
+    vi) Automate invoicing, accounts receivable, and revenue recognition  
+    vii) Generate business intelligence reports on utilization, margins, and project performance
+    
+    Where they work
+    
+    i) Consulting firms and management advisory services  
+    ii) IT services and software implementation companies  
+    iii) Marketing, advertising, and creative agencies  
+    iv) Engineering and architectural services  
+    v) Legal firms and professional partnerships  
+    vi) Accounting and financial advisory practices  
+    vii) Any organization delivering billable professional services'''
 
 
     "*Product 5:*\n"
