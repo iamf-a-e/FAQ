@@ -55,8 +55,29 @@ products=(
     "*Product 3:*\n"
     "- Name: Internal Business Tools\n"
     '''About this item
-    \n\n
+    We build powerful internal business tools that help organizations manage operations, data, and teams more efficiently. These tools are designed specifically for internal use, improving productivity, visibility, and control across the business while reducing reliance on manual processes and spreadsheets.
+    
+    What our internal business tools do
+    
+    i) Centralize business data into secure, easy-to-use dashboards  
+    ii) Automate internal workflows and approvals  
+    iii) Manage users, roles, and permissions  
+    iv) Track performance, tasks, and operational metrics  
+    v) Generate real-time reports and insights for decision-making  
+    vi) Integrate with existing systems such as CRM, ERP, and accounting software  
+    vii) Improve collaboration between departments  
+    
+    Where they work
+    
+    i) Web-based internal dashboards and admin panels  
+    ii) HR and payroll management systems  
+    iii) Inventory, procurement, and asset management platforms  
+    iv) Finance, accounting, and reporting tools  
+    v) Operations and management control systems  
+    vi) Customer and vendor management portals  
+    vii) Custom internal systems tailored to specific business needs
     '''
+
    
     
     "*Product 4:*\n"
