@@ -401,7 +401,7 @@ products=(
     iv) IoT platforms and connected device management  
     v) Gaming servers and multiplayer platforms  
     vi) Financial systems and transaction processing  
-    vii) Custom backend solutions for specific industry requirements''''
+    vii) Custom backend solutions for specific industry requirements'''
     
 
     "*Product 3:*\n"
