@@ -13,14 +13,14 @@ products=(
     iii)Guide users through processes such as bookings, forms, and onboarding \n   
     iv) Operate 24/7 with consistent performance \n   
     v) Improve over time using real interaction data \n   
-    vi) Escalate conversations smoothly to human agents when needed \n
+    vi) Escalate conversations smoothly to human agents when needed \n\n
     
-    *Where they work*
+    Where they work \n\n
     
-    i) Websites and web applications    
-    ii) WhatsApp (Meta API)    
-    iii) Facebook Messenger    
-    iv) Mobile applications    
+    i) Websites and web applications \n    
+    ii) WhatsApp (Meta API) \n   
+    iii) Facebook Messenger \n    
+    iv) Mobile applications \n   
     v) Custom internal systems (CRM, ERP, databases)\n\n
     '''
   
