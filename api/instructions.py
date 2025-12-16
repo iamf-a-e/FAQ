@@ -82,7 +82,7 @@ Bot: Thanks for your question. This request requires further review by our team,
 
 PRODUCT RECOGNITION HELP:
 When users ask about products, they might use different terms. For example:
-- 'chatbots' refers to 'AI Chatbots'
+- 'chatbots' refers to 'AI Agents'
 - 'mobile apps' refers to 'Mobile Applications'
 - 'web apps' refers to 'Websites'
 - 'API integration' refers to 'API-to-API'
