@@ -27,8 +27,29 @@ products=(
     "*Product 2:*\n" 
     "- Name: Automation Systems\n"
     '''About this item
-    \n\n
+    We design robust and scalable automation systems that streamline business operations, reduce manual work, and improve efficiency across departments. Our automation solutions help organizations save time, minimize errors, and focus more on growth and innovation.
+    
+    What our automation systems do
+    
+    i) Automate repetitive and time-consuming business processes  
+    ii) Integrate multiple systems (software, databases, APIs) into a single automated workflow  
+    iii) Trigger actions based on rules, events, or schedules  
+    iv) Collect, process, and synchronize data automatically  
+    v) Reduce human error and improve operational accuracy  
+    vi) Generate logs, reports, and alerts for better monitoring and decision-making  
+    vii) Scale easily as business needs grow  
+    
+    Where they work
+    
+    i) Business operations (finance, HR, inventory, procurement)  
+    ii) Customer service and support workflows  
+    iii) E-commerce order processing and fulfillment  
+    iv) Marketing and sales pipelines (CRM automation)  
+    v) Healthcare, education, and public service systems  
+    vi) Manufacturing and logistics processes  
+    vii) Custom internal systems (ERP, CRM, databases, cloud platforms)
     '''
+
     
     
     "*Product 3:*\n"
