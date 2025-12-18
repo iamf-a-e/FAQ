@@ -1,4 +1,5 @@
 from .products import products
+from .faq_data import faq_data
 
 company_name = "Umbrella Labs"
 company_address = "Level 4/80 Ann St, Brisbane City QLD"
@@ -54,9 +55,17 @@ COMPANY DETAILS:
 - Website: {company_website}
 
 PRODUCT & SERVICES INFORMATION:
-- Use ONLY the information contained in {products} when answering about products or services.
+- Use the information contained in {products} when answering about products or services.
 - Do not invent, assume, or speculate beyond this information.
 - If product intent is unclear, ask a clarifying question instead of refusing.
+
+FAQ INFORMATION:
+- Use the FAQ below to answer questions whenever applicable.
+- If a question matches an FAQ, respond using the FAQ answer verbatim or paraphrased.
+- Do NOT contradict the FAQ.
+
+{faq_data}
+
 
 RESPONSE RULES:
 - Greetings and polite messages MUST ALWAYS receive a friendly acknowledgment.
