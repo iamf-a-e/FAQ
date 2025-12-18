@@ -129,43 +129,7 @@ def chat():
         if not message:
             return jsonify({"error": "Message is required"}), 400
 
-        # 🔒 HARD SCOPE ENFORCEMENT
-        if not is_in_scope(message):
-            return jsonify({
-                "response": (
-                    "I’m here to assist with questions related to "
-                    "Umbrella Labs’ products and services. How may I help you?"
-                ),
-                "needs_human": False,
-                "session_id": session_id,
-                "status": "success"
-            })
-
-        convo = get_conversation(session_id)
-        response = convo.send_message(message)
-
-        answer = response.text if hasattr(response, "text") else str(response)
-
-        # 🔍 HUMAN ESCALATION TOKEN
-        needs_human = "unable_to_solve_query" in answer
-
-        # CLEAN RESPONSE
-        clean_answer = answer.replace("unable_to_solve_query", "").strip()
-
-        return jsonify({
-            "response": clean_answer,
-            "needs_human": needs_human,
-            "session_id": session_id,
-            "status": "success"
-        })
-
-    except Exception as e:
-        logging.error(f"Chat error: {str(e)}")
-        return jsonify({
-            "error": "Internal server error",
-            "status": "error"
-        }), 500
-
+       
 @app.route("/api/clear", methods=["POST"])
 def clear_history():
     try:
