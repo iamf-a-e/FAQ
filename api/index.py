@@ -11,14 +11,14 @@ from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")  # Note: variable name changed
+GEN_API = os.environ.get("GEN_API")  # Note: variable name changed
 MODEL_NAME = "gpt-4o"  # Options: "gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"
 
-if not OPENAI_API_KEY:
-    raise RuntimeError("OPENAI_API_KEY environment variable not set")
+if not GEN_API:
+    raise RuntimeError("GEN_API environment variable not set")
 
 # Initialize OpenAI client
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=GEN_API)
 
 # Load system instructions (STATIC, SAFE)
 try:
