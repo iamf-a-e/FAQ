@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import OpenAI  # OpenAI official library
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
@@ -11,41 +11,21 @@ from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
 
-GEN_API_KEY = os.environ.get("GEN_API")
-MODEL_NAME = "gpt-5-nano" 
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")  # Note: variable name changed
+MODEL_NAME = "gpt-4o"  # Options: "gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"
 
-if not GEN_API_KEY:
-    raise RuntimeError("GEN_API environment variable not set")
+if not OPENAI_API_KEY:
+    raise RuntimeError("OPENAI_API_KEY environment variable not set")
 
-OpenAI.configure(api_key=GEN_API_KEY)
+# Initialize OpenAI client
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Load system instructions (STATIC, SAFE)
-from .instructions import instructions as SYSTEM_PROMPT
-
-# ===============================
-# GEMINI MODEL (SAFE INIT)
-# ===============================
-
-generation_config = {
-    "temperature": 0.6,
-    "top_p": 0.9,
-    "top_k": 40,
-    "max_output_tokens": 2048,
-}
-
-safety_settings = [
-    {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-    {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-    {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-    {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-]
-
-# ❌ DO NOT pass system_instruction here (SDK crash)
-model = OpenAI.GenerativeModel(
-    model_name=MODEL_NAME,
-    generation_config=generation_config,
-    safety_settings=safety_settings
-)
+try:
+    from .instructions import instructions as SYSTEM_PROMPT
+except ImportError:
+    # Fallback for testing
+    SYSTEM_PROMPT = "You are a helpful AI assistant specializing in Umbrella Labs services."
 
 # ===============================
 # FLASK APP
@@ -68,18 +48,13 @@ conversations = {}
 
 def get_conversation(session_id: str):
     """
-    Creates a chat session with SYSTEM_PROMPT injected
-    safely via chat history (SDK compatible)
+    Returns a chat session with initial system message
     """
     if session_id not in conversations:
-        conversations[session_id] = model.start_chat(
-            history=[
-                {
-                    "role": "user",
-                    "parts": [SYSTEM_PROMPT]
-                }
-            ]
-        )
+        # Initialize conversation history with system message
+        conversations[session_id] = [
+            {"role": "system", "content": SYSTEM_PROMPT}
+        ]
     return conversations[session_id]
 
 # ===============================
@@ -113,7 +88,8 @@ def is_in_scope(message: str) -> bool:
 def home():
     return jsonify({
         "status": "AI Agent API is running",
-        "model": MODEL_NAME
+        "model": MODEL_NAME,
+        "provider": "OpenAI ChatGPT"
     })
 
 @app.route("/api/chat", methods=["POST", "OPTIONS"])
@@ -129,13 +105,44 @@ def chat():
         if not message:
             return jsonify({"error": "Message is required"}), 400
 
-        convo = get_conversation(session_id)
-        response = convo.send_message(message)
+        # Check if message is in scope
+        if not is_in_scope(message):
+            return jsonify({
+                "response": "I'm sorry, but I can only answer questions related to Umbrella Labs and its services. Please ask about AI, chatbots, software, automation, integration, APIs, systems, platforms, support, or services.",
+                "needs_human": False,
+                "session_id": session_id,
+                "status": "success"
+            })
 
-        answer = response.text if hasattr(response, "text") else str(response)
-
-        needs_human = "unable_to_solve_query" in answer
-        clean_answer = answer.replace("unable_to_solve_query", "").strip()
+        # Get conversation history
+        conversation_history = get_conversation(session_id)
+        
+        # Add user message to history
+        conversation_history.append({"role": "user", "content": message})
+        
+        # Call OpenAI API
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=conversation_history,
+            temperature=0.6,
+            max_tokens=2048,
+        )
+        
+        # Get assistant response
+        assistant_response = response.choices[0].message.content
+        
+        # Add assistant response to history
+        conversation_history.append({"role": "assistant", "content": assistant_response})
+        
+        # Limit history length to prevent token overflow
+        if len(conversation_history) > 20:  # Keep last 20 messages
+            # Keep system message and recent messages
+            conversation_history = [conversation_history[0]] + conversation_history[-19:]
+            conversations[session_id] = conversation_history
+        
+        # Check if human intervention is needed
+        needs_human = "unable_to_solve_query" in assistant_response.lower()
+        clean_answer = assistant_response.replace("unable_to_solve_query", "").strip()
 
         return jsonify({
             "response": clean_answer,
@@ -147,16 +154,15 @@ def chat():
     except Exception as e:
         logging.error(f"Chat error: {str(e)}")
         return jsonify({
-            "error": "Internal server error",
+            "error": f"Internal server error: {str(e)}",
             "status": "error"
         }), 500
 
-
-       
 @app.route("/api/clear", methods=["POST"])
 def clear_history():
     try:
-        session_id = (request.json or {}).get("session_id", "default")
+        data = request.json or {}
+        session_id = data.get("session_id", "default")
         conversations.pop(session_id, None)
 
         return jsonify({
@@ -169,12 +175,14 @@ def clear_history():
 @app.route("/api/health", methods=["GET"])
 def health_check():
     try:
-        test_model = OpenAI.GenerativeModel(MODEL_NAME)
-        test_model.generate_content("Health check")
-
+        # Simple health check - list available models
+        models = client.models.list()
+        model_ids = [model.id for model in models.data]
+        
         return jsonify({
             "status": "healthy",
             "model": MODEL_NAME,
+            "available_models": model_ids[:10],  # Show only first 10
             "timestamp": str(datetime.now())
         })
     except Exception as e:
