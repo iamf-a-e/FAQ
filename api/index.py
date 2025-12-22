@@ -1,4 +1,4 @@
-import google.generativeai as genai
+from openai import OpenAI
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
@@ -12,7 +12,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 GEN_API_KEY = os.environ.get("GEN_API")
-MODEL_NAME = "GPT-5 nano" 
+MODEL_NAME = "gpt-5-nano" 
 
 if not GEN_API_KEY:
     raise RuntimeError("GEN_API environment variable not set")
