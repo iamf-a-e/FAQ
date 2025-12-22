@@ -57,28 +57,7 @@ def get_conversation(session_id: str):
         ]
     return conversations[session_id]
 
-# ===============================
-# HARD SCOPE FILTER
-# ===============================
 
-ALLOWED_KEYWORDS = [
-    "umbrella",
-    "umbrella labs",
-    "ai",
-    "chatbot",
-    "software",
-    "automation",
-    "integration",
-    "api",
-    "system",
-    "platform",
-    "support",
-    "services",
-]
-
-def is_in_scope(message: str) -> bool:
-    msg = message.lower()
-    return any(keyword in msg for keyword in ALLOWED_KEYWORDS)
 
 # ===============================
 # ROUTES
