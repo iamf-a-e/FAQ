@@ -12,7 +12,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 GEN_API_KEY = os.environ.get("GEN_API")
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "GPT-5 nano" 
 
 if not GEN_API_KEY:
     raise RuntimeError("GEN_API environment variable not set")
