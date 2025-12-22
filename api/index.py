@@ -107,7 +107,11 @@ def chat():
         if not message:
             return jsonify({"error": "Message is required"}), 400
 
-           
+        convo = get_conversation(session_id)
+        response = convo.send_message(message)
+
+        answer = response.text if hasattr(response, "text") else str(response)
+   
 
         # 🔍 HUMAN ESCALATION TOKEN
         needs_human = "unable_to_solve_query" in answer
