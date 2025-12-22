@@ -17,7 +17,7 @@ MODEL_NAME = "gpt-5-nano"
 if not GEN_API_KEY:
     raise RuntimeError("GEN_API environment variable not set")
 
-genai.configure(api_key=GEN_API_KEY)
+OpenAI.configure(api_key=GEN_API_KEY)
 
 # Load system instructions (STATIC, SAFE)
 from .instructions import instructions as SYSTEM_PROMPT
@@ -41,7 +41,7 @@ safety_settings = [
 ]
 
 # ❌ DO NOT pass system_instruction here (SDK crash)
-model = genai.GenerativeModel(
+model = OpenAI.GenerativeModel(
     model_name=MODEL_NAME,
     generation_config=generation_config,
     safety_settings=safety_settings
@@ -169,7 +169,7 @@ def clear_history():
 @app.route("/api/health", methods=["GET"])
 def health_check():
     try:
-        test_model = genai.GenerativeModel(MODEL_NAME)
+        test_model = OpenAI.GenerativeModel(MODEL_NAME)
         test_model.generate_content("Health check")
 
         return jsonify({
