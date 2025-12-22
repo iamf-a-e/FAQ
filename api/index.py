@@ -12,7 +12,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 GEN_API = os.environ.get("GEN_API")  # Note: variable name changed
-MODEL_NAME = "gpt-3.5"  # Options: "gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"
+MODEL_NAME = "gpt-4o"  # Options: "gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"
 
 if not GEN_API:
     raise RuntimeError("GEN_API environment variable not set")
