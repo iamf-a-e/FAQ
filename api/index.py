@@ -84,14 +84,7 @@ def chat():
         if not message:
             return jsonify({"error": "Message is required"}), 400
 
-        # Check if message is in scope
-        if not is_in_scope(message):
-            return jsonify({
-                "response": "I'm sorry, but I can only answer questions related to Umbrella Labs and its services. Please ask about AI, chatbots, software, automation, integration, APIs, systems, platforms, support, or services.",
-                "needs_human": False,
-                "session_id": session_id,
-                "status": "success"
-            })
+       
 
         # Get conversation history
         conversation_history = get_conversation(session_id)
