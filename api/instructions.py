@@ -1,5 +1,5 @@
 from .products import products
-from .faq_data import faq_data
+from .faq_data import faq_data 
 
 company_name = "Umbrella Labs"
 company_address = "Level 4/80 Ann St, Brisbane City QLD"
