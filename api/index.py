@@ -40,7 +40,7 @@ safety_settings = [
     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
 ]
 
-# ❌ DO NOT pass system_instruction here (SDK crash)
+
 model = genai.GenerativeModel(
     model_name=MODEL_NAME,
     generation_config=generation_config,
