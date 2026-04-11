@@ -61,7 +61,6 @@ CORS(app, resources={
 
 # ===============================
 # CONVERSATION STORAGE
-# (Replace with Redis in production)
 # ===============================
 
 conversations = {}
